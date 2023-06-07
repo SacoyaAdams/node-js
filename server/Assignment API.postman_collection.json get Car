@@ -1,0 +1,43 @@
+{
+	"info": {
+		"_postman_id": "685bcce1-d344-4ce8-b145-bbf70810b823",
+		"name": "Assignment API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27838324"
+	},
+	"item": [
+		{
+			"name": "GET message",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "GET Car",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost/cars/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"cars",
+						"3"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

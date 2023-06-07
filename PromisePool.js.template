@@ -4,6 +4,6 @@ exports.promisePool = mysql.createPool(
     {
         host:     'xxx', // <== Update
         user:     'xxx', // <== Update
-        password: 'xxx', // <== Update
-        database: 'xxx'  // <== Update
+        password: '', // <== Update
+        database: 'sql-primer2'  // <== Update
     }).promise()

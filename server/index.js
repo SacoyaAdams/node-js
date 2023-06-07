@@ -1,6 +1,7 @@
 const cors = require("cors");
 const express = require("express");
 const { body, check, param, validationResult } = require("express-validator");
+const { promisPool, promisePool } = require("./PromisePool");
 
 const PORT = 80;
 const app = express();
@@ -18,6 +19,22 @@ app.use(express.urlencoded({ extended: true }));
 
 app.get("/message", cors(corsOptions), async (req, res) => {
   res.send({ message: "Hello coya!" });
+});
+
+//creating a route and using a query to get there
+app.get("/cars", cors(corsOptions), async (req, res) => {
+  const [rows] = await promisePool.query("SELECT * FROM car");
+  console.log(rows);
+  res.send(rows);
+});
+
+app.get("/cars/:id", cors(corsOptions), async (req, res) => {
+  const carId = req.params["id"];
+  const [rows] = await promisePool.query("SELECT * from car Where car_id = ?", [
+    carId,
+  ]);
+  console.log(rows);
+  res.send(rows);
 });
 
 app.listen(PORT, () => {

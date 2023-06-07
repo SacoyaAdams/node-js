@@ -3,6 +3,7 @@ const express = require('express')
 const mySqlProxy = require('./MySqlProxy')
 const { body, check, param, validationResult } = require('express-validator')
 
+
 const PORT = 80
 const app = express()
 const corsOptions = { origin: ['http://localhost:3000'], optionsSuccessStatus: 200 }
@@ -15,6 +16,7 @@ app.use(express.urlencoded({extended: true}))
 app.get('/message', cors(corsOptions), async (req, res) => { 
     res.send({message: 'Hello World!!!'})
 })
+
 
 //
 // Person

@@ -36,6 +36,17 @@ app.get("/cars/:id", cors(corsOptions), async (req, res) => {
   console.log(rows);
   res.send(rows);
 });
+app.get("/cars", cors(corsOptions), async (req, res) => {
+    const carMake = req.query["make"];
+    const [rows] = await promisePool.query("SELECT * from car Where make= ?", [
+      carMake,
+    ]);
+    console.log(rows);
+    res.send(rows);
+  });
+
+
+
 
 app.listen(PORT, () => {
   console.log(`Express web API running on port: ${PORT}.`);

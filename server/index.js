@@ -61,7 +61,11 @@ app.put("/cars/", cors(corsOptions), async (req, res)=> {
     res.send(update)
 })
 
-
+app.delete('/cars/:id', cors(corsOptions), async (req, res)=> {
+    const carId = req.params['id'];
+    const deleteCar = await promisePool.query("delete from car where car_id = ?", [carId])
+    res.send(deleteCar)
+})
 
 app.listen(PORT, () => {
   console.log(`Express web API running on port: ${PORT}.`);

@@ -55,6 +55,14 @@ app.post("/cars/", cors(corsOptions), async (req, res) => {
 //   res.send(rows);
 });
 
+app.put("/cars/", cors(corsOptions), async (req, res)=> {
+    const  { model, make, color, price, carId } = req.body;
+    const update = await promisePool.query("update car set make = ?, model = ?, color = ?, price = ? where car_id = ?", [ model, make, color, price, carId])
+    res.send(update)
+})
+
+
+
 app.listen(PORT, () => {
   console.log(`Express web API running on port: ${PORT}.`);
 });
